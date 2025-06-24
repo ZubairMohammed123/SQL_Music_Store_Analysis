@@ -1,4 +1,4 @@
-🎵 Music Store Data Analysis – SQL Portfolio Project
+🎵 #Music Store Data Analysis – SQL Portfolio Project
 
 This project explores a fictional digital music store database using SQL. The objective is to derive business insights from customer behavior, music genre preferences, and revenue trends using structured SQL queries.
 
