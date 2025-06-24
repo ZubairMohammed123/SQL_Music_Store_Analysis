@@ -1,4 +1,4 @@
-# SQL_Music_Store_Analysis
+# “Music Store Data Analysis – SQL Portfolio Project”
 Digital Music Store data analysis using SQL
 SQL_Project_Music_Store_Analysis
 SQL project to analyze online music store data
