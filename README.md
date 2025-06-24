@@ -16,11 +16,15 @@ ________________________________________
 3.	What are the top 3 invoice totals?
 4.	Which city has the highest total invoice value?
 5.	Who is the customer who has spent the most?
+   
 💠 Moderate
+
 1.	Who are the Rock music listeners (email, name, genre)?
 2.	Top 10 Rock artists by number of tracks
 3.	Tracks longer than average length (with duration)
+   
 📈 Advanced
+
 1.	How much has each customer spent on the best-selling artist?
 2.	What is the most popular genre in each country?
 3.	Top customer by total spend per country (supporting ties)
