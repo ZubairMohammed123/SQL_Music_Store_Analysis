@@ -2,26 +2,24 @@
 
 /* Q1: Who is the senior most employee based on job title? */
 
-SELECT title, last_name, first_name 
-FROM employee
-ORDER BY levels DESC
-LIMIT 1
+SELECT * FROM EMPLOYEE
+ORDER BY LEVELS DESC
+LIMIT 1;
+
 
 
 /* Q2: Which countries have the most Invoices? */
-
-SELECT COUNT(*) AS c, billing_country 
-FROM invoice
-GROUP BY billing_country
-ORDER BY c DESC
+SELECT count(*) as c, billing_country
+from invoice
+group by billing_country
+order by c desc;
 
 
 /* Q3: What are top 3 values of total invoice? */
 
-SELECT total 
-FROM invoice
-ORDER BY total DESC
-
+select total from invoice
+order by total desc
+limit 3
 
 /* Q4: Which city has the best customers? We would like to throw a promotional Music Festival in the city we made the most money. 
 Write a query that returns one city that has the highest sum of invoice totals. 
@@ -45,8 +43,6 @@ ORDER BY total_spending DESC
 LIMIT 1;
 
 
-
-
 /* Question Set 2 - Moderate */
 
 /* Q1: Write query to return the email, first name, last name, & Genre of all Rock Music listeners. 
@@ -54,25 +50,26 @@ Return your list ordered alphabetically by email starting with A. */
 
 /*Method 1 */
 
-SELECT DISTINCT email,first_name, last_name
+SELECT DISTINCT email, first_name, last_name
 FROM customer
 JOIN invoice ON customer.customer_id = invoice.customer_id
-JOIN invoiceline ON invoice.invoice_id = invoiceline.invoice_id
-WHERE track_id IN(
-	SELECT track_id FROM track
-	JOIN genre ON track.genre_id = genre.genre_id
-	WHERE genre.name LIKE 'Rock'
+JOIN invoice_line ON invoice.invoice_id = invoice_line.invoice_id
+WHERE track_id IN (
+  SELECT track_id FROM track
+  JOIN genre ON track.genre_id = genre.genre_id
+  WHERE genre.name LIKE 'Rock'
 )
 ORDER BY email;
 
 
+
 /* Method 2 */
 
-SELECT DISTINCT email AS Email,first_name AS FirstName, last_name AS LastName, genre.name AS Name
+SELECT DISTINCT email AS Email,first_name AS FirstName, last_name AS LastName, genre.name AS Name_genre
 FROM customer
 JOIN invoice ON invoice.customer_id = customer.customer_id
-JOIN invoiceline ON invoiceline.invoice_id = invoice.invoice_id
-JOIN track ON track.track_id = invoiceline.track_id
+JOIN invoice_line ON invoice_line.invoice_id = invoice.invoice_id
+JOIN track ON track.track_id = invoice_line.track_id
 JOIN genre ON genre.genre_id = track.genre_id
 WHERE genre.name LIKE 'Rock'
 ORDER BY email;
@@ -95,12 +92,12 @@ LIMIT 10;
 /* Q3: Return all the track names that have a song length longer than the average song length. 
 Return the Name and Milliseconds for each track. Order by the song length with the longest songs listed first. */
 
-SELECT name,miliseconds
+SELECT name,milliseconds
 FROM track
-WHERE miliseconds > (
-	SELECT AVG(miliseconds) AS avg_track_length
+WHERE milliseconds > (
+	SELECT AVG(milliseconds) AS avg_track_length
 	FROM track )
-ORDER BY miliseconds DESC;
+ORDER BY milliseconds DESC;
 
 
 
@@ -134,6 +131,8 @@ JOIN album alb ON alb.album_id = t.album_id
 JOIN best_selling_artist bsa ON bsa.artist_id = alb.artist_id
 GROUP BY 1,2,3,4
 ORDER BY 5 DESC;
+
+
 
 
 /* Q2: We want to find out the most popular music Genre for each country. We determine the most popular genre as the genre 
@@ -225,6 +224,5 @@ WHERE cc.total_spending = ms.max_spending
 ORDER BY 1;
 
 
-/* source: www.youtube.com/@RishabhMishraOfficial */
 
 /* Thank You :) */
